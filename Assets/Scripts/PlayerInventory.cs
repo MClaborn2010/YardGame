@@ -9,7 +9,7 @@ public class PlayerInventory : MonoBehaviour
     {
         items.Add(item);
         string conditionName = item.Condition != null ? item.Condition.ConditionName : "Unknown";
-        Debug.Log($"Added {item.Name} (${item.Price}, {conditionName}) to inventory. Total items: {items.Count}");
+        Debug.Log($"Added {item.Name} (${item.Price}, {conditionName}) to your inventory. Total items: {items.Count}");
     }
 
     public List<YardSaleItemData> GetItems()
