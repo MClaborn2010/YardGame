@@ -17,8 +17,8 @@ public class YardSaleItem : MonoBehaviour, IInteractable
     {
         PlayerWallet wallet = interactor.GetComponent<PlayerWallet>();
         PlayerInventory inventory = interactor.GetComponent<PlayerInventory>();
-        InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
-        WalletUI walletUI = FindObjectOfType<WalletUI>();
+        InventoryUI inventoryUI = FindFirstObjectByType<InventoryUI>();
+        WalletUI walletUI = FindFirstObjectByType<WalletUI>();
 
         if (wallet != null && inventory != null)
         {

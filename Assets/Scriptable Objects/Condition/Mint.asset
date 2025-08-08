@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130fe8abe8ac3eb4ebad609495132763, type: 3}
   m_Name: Mint
   m_EditorClassIdentifier: 
-  conditionName: Good
+  conditionName: Mint
   priceMultiplier: 1

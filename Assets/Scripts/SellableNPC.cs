@@ -15,14 +15,22 @@ public class SellableNPC : MonoBehaviour, IInteractable
     {
         PlayerInventory inventory = interactor.GetComponent<PlayerInventory>();
         PlayerWallet wallet = interactor.GetComponent<PlayerWallet>();
-        InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
-        WalletUI walletUI = FindObjectOfType<WalletUI>();
+        InventoryUI inventoryUI = FindFirstObjectByType<InventoryUI>();
+        WalletUI walletUI = FindFirstObjectByType<WalletUI>();
 
         if (inventory != null && inventory.GetItems().Count > 0)
         {
             var item = inventory.GetItems()[0];
             float conditionMultiplier = item.Condition != null ? item.Condition.PriceMultiplier : 1f;
-            float sellPrice = item.Price * (resaleValue / 100f) * conditionMultiplier;
+            float sellPrice;
+            if (item.Name == "Trash") // Use == for comparison
+            {
+                sellPrice = 1;
+            }
+            else
+            {
+                sellPrice = item.Price * (resaleValue / 100f) * conditionMultiplier;
+            }
             inventory.GetItems().RemoveAt(0);
             wallet.SpendMoney(-sellPrice); // Add sell price to wallet
             string conditionName = item.Condition != null ? item.Condition.ConditionName : "Unknown";
